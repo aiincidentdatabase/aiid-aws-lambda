@@ -5,7 +5,7 @@ RUN yum -y groupinstall "Development tools"
 RUN yum -y install gcc-c++ libcurl-devel cmake3 git
 
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir news-please
+    pip install --no-cache-dir news-please cchardet
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
