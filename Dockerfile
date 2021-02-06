@@ -1,7 +1,8 @@
 # Container image that runs your code
 FROM public.ecr.aws/lambda/python:3.8
 
-RUN apk add -U --no-cache curl git make gcc python-dev libffi-dev musl-dev libxml2-dev libxslt-dev openssl-dev zlib-dev jpeg-dev
+RUN apt-get update && \
+    apt-get -y install curl make gcc python-dev libffi-dev musl-dev libxml2-dev libxslt-dev openssl-dev zlib-dev jpeg-dev
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir news-please
