@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: actions/aiid-aws-lambda
+      uses: aiincidentdatabase/aiid-aws-lambda/action.yml@t1
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
