@@ -1,8 +1,8 @@
 # Container image that runs your code
 FROM public.ecr.aws/lambda/python:3.8
 
-RUN apt-get update && \
-    apt-get -y install curl make gcc python-dev libffi-dev musl-dev libxml2-dev libxslt-dev openssl-dev zlib-dev jpeg-dev
+RUN yum -y groupinstall "Development tools"
+RUN yum -y install gcc-c++ libcurl-devel cmake3 git
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir news-please
