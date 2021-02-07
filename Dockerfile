@@ -8,7 +8,7 @@ RUN pip install --upgrade pip && \
     pip install --no-cache-dir news-please cchardet
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY parsenews.py /parsenews.py
+COPY parsenews.py /var/task/
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/parsenews.py"]
+ENTRYPOINT ["/var/task/parsenews.py"]
