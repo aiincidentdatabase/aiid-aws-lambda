@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM public.ecr.aws/lambda/python:3.8
+FROM amazon/aws-lambda-python
 
 RUN yum -y groupinstall "Development tools"
 RUN yum -y install gcc-c++ libcurl-devel cmake3 git
