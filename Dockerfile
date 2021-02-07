@@ -7,7 +7,6 @@ RUN yum -y install gcc-c++ libcurl-devel cmake3 git
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir news-please cchardet
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY parsenews.py /
+COPY parsenews.py /var/task/
 
 CMD ["parsenews.lambda_handler"]
