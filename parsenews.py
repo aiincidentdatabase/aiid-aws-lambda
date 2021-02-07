@@ -4,10 +4,9 @@ import json
 from newsplease import NewsPlease
 
 def respond(err, res=None):
-    article = json.dumps(NewsPlease.from_url('https://seanbmcgregor.com/DeepfakeDetectionGame.html').get_dict(), default=str)
     return {
         'statusCode': '400' if err else '200',
-        'body': err.message if err else article,
+        'body': err.message if err else res,
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Headers': 'Content-Type',
@@ -21,10 +20,7 @@ def lambda_handler(event, context):
     access to the request and response payload, including headers and
     status code.
     '''
-    return respond(None, {})
-    operation = event['httpMethod']
-    if operation in ['GET', 'POST', 'PUT', 'OPTIONS']:
-        payload = event['queryStringParameters'] if operation == 'GET' else json.loads(event['body'])
-        return respond(None, {})
-    else:
-        return respond(ValueError('Unsupported method "{}"'.format(operation)))
+    res = json.dumps(
+        NewsPlease.from_url(event['url']).get_dict(),
+        default=str)
+    return respond(None, res)
