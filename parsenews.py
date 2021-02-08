@@ -11,7 +11,7 @@ def lambda_handler(event, context):
     context.log(str(event.keys()))
     if 'body' in event:
         context.log('2222222222222222!')
-        context.log(event['body'])
+        context.log(event['body'].keys())
         context.log(json.loads(event['body']))
         req = json.loads(event['body'])
         context.log(req['url'])
