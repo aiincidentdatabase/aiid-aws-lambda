@@ -12,9 +12,11 @@ def lambda_handler(event, context):
     if 'body' in event:
         context.log('2222222222222222!')
         context.log(event['body'])
-        context.log(event['body']['url'])
+        context.log(json.loads(event['body']))
+        req = json.loads(event['body'])
+        context.log(req['url'])
         res = json.dumps(
-            NewsPlease.from_url(event['body']['url']).get_dict(),
+            NewsPlease.from_url(req['url']).get_dict(),
             default=str)
         return res
     else:
