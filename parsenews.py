@@ -10,6 +10,8 @@ def lambda_handler(event, context):
     context.log(event)
     context.log(str(event.keys()))
     if 'body' in event:
+        context.log('000000000000000000000000')
+        context.log(event['rawQueryString'])
         context.log('2222222222222222!')
         context.log(json.loads(event['body']))
         context.log('333333333333')
