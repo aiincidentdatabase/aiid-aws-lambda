@@ -7,6 +7,8 @@ def lambda_handler(event, context):
     '''Support the HTTP CORS pre-flight, then respond to the actual request.
     '''
     context.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz!')
+    context.log(event)
+    context.log(str(event.keys()))
     if 'url' in event:
         context.log('2222222222222222!')
         context.log(event['url'])
