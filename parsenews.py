@@ -16,11 +16,12 @@ def respond(err, res=None):
     }
 
 def lambda_handler(event, context):
-    '''Demonstrates a simple HTTP endpoint using API Gateway. You have full
-    access to the request and response payload, including headers and
-    status code.
+    '''Support the HTTP CORS pre-flight, then respond to the actual request.
     '''
-    res = json.dumps(
-        NewsPlease.from_url(event['url']).get_dict(),
-        default=str)
-    return respond(None, res)
+    if 'url' in event:
+        res = json.dumps(
+            NewsPlease.from_url(event['url']).get_dict(),
+            default=str)
+        return respond(None, res)
+    else:
+        return respond(None, {})
