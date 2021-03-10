@@ -9,19 +9,14 @@ def lambda_handler(event, context):
     context.log('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz!')
     context.log(event)
     context.log(str(event.keys()))
-    if 'body' in event:
+    if 'queryStringParameters' in event:
         context.log('000000000000000000000000')
-        context.log(event['rawQueryString'])
+        context.log(event['queryStringParameters'])
         context.log('2222222222222222!')
-        context.log(json.loads(event['body']))
-        context.log('333333333333')
-        context.log(event['rawQueryString'])
-        context.log('4444444444444')
-        req = json.loads(event['body'])
-        context.log(req.keys())
         res = json.dumps(
-            NewsPlease.from_url(req['url']).get_dict(),
+            NewsPlease.from_url(event['queryStringParameters']['url']).get_dict(),
             default=str)
+        context.log('3333333333333333333333333')
         return res
     else:
         context.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy!')
